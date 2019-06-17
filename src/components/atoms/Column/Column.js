@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Header = styled.div`
-    background-color: #ffffff;
-    padding: 10px;
     box-shadow: 0 0 12px #eeeeee;
     z-index: +1;
 `

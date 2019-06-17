@@ -17,6 +17,7 @@ export default styled.button`
     all: unset;
     color: ${({ type }) => types[type]};
     font-size: ${({ size }) => sizes[size]};
+    cursor: pointer;
 
     ${ ({underline, type}) => underline && `
         border-bottom: 1px solid ${types[type] || '#000000'}22;
