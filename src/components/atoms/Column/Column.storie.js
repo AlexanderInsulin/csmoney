@@ -10,7 +10,7 @@ const Block = styled.div`
     flex-shrink: 0;
 `
 
-storiesOf('Column', module)
+storiesOf('atoms/Column', module)
   .add('with text', () => (
     <div style={{ width: '280px', height: '300px'  }}>
         <Column header={<div>123</div>}>

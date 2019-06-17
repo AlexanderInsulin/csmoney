@@ -14,7 +14,7 @@ const selectHelper = (propTypes) => {
 const typesNames = selectHelper(types)
 const sizesNames = selectHelper(sizes)
 
-storiesOf('Action', module)
+storiesOf('atoms/Action', module)
   .add('with text', () => (
     <div style={{ width: '280px', height: '300px'  }}>
         <Action
