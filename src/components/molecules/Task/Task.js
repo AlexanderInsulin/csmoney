@@ -30,6 +30,8 @@ const Actions = styled.div`
     }
 `
 
+const preapareBoard = (board) => ({ id: board.id, text: board.name })
+
 export default ({ title, description, otherBoards, onDelete, onMove }) => (
     <Card>
         <Layout>
@@ -37,7 +39,7 @@ export default ({ title, description, otherBoards, onDelete, onMove }) => (
             <Description>{description}</Description>
             <Actions>
                 <Action type={'danger'} onClick={onDelete}>Удалить</Action>
-                <Dropdown items={otherBoards} onChoose={(item => onMove(item.id))}>
+                <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
                     <Action type={'secondary'}>Переместить ↓</Action>
                 </Dropdown>
             </Actions>
