@@ -23,6 +23,7 @@ const Layout = styled.div`
     background-color: rgb(242, 242, 242);
     overflow: hidden;
     height: 100%;
+    flex: 1;
 `
 
 export default ({ header, children }) => (
