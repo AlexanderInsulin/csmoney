@@ -1,18 +1,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import Action from '../Action'
 
 import Dropdown from './Dropdown';
 
 const items = [
-    { text: 'first', action: () => { alert('first') } },
-    { text: 'second', action: () => { alert('second') } },
+    { text: 'first', id: 1 },
+    { text: 'second', id: 2 },
 ]
 
 storiesOf('atoms/Dropdown', module)
   .add('with text', () => (
     <div>
-        <Dropdown items={items}>
+        <Dropdown items={items} onChoose={action('onChoose')}>
             <Action type={'secondary'}>Переместить ↓</Action>
         </Dropdown>
     </div>
