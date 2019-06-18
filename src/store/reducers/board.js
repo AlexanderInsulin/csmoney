@@ -8,7 +8,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log(action)
   if (action.boardId && action.boardId !== state.id) return state  
 
   switch (action.type) {
