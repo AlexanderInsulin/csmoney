@@ -13,5 +13,8 @@ export default () => {
     const onTaskMove = ({ taskId, boardId, fromBoardId }) =>
         dispatch(actions.taskActions.moveTask(taskId, boardId, fromBoardId))
 
-    return <BoardsList {...{ boards, onTaskDelete, onTaskMove }} />
+    const onTaskAdd = ({ taskName, taskDescription, boardId }) =>
+        dispatch(actions.taskActions.addTask(taskName, taskDescription, boardId))
+
+    return <BoardsList {...{ boards, onTaskDelete, onTaskMove, onTaskAdd }} />
 };

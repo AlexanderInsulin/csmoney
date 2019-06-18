@@ -25,12 +25,23 @@ const ItemWrapper = styled.div`
     margin: 0px 10px 20px;
 `
 
-export default ({ board, otherBoards, onTaskMove, onTaskDelete }) => {
+export default ({ board, otherBoards, onTaskMove, onTaskDelete, onTaskAdd }) => {
     const [direction, setDirection] = useState('down')
+    const [addTask, setAddTask] = useState(false)
 
     const changeSort = () => {
         if (direction === 'down') setDirection('up')
         else setDirection('down')
+    }
+
+    const onSave = ({ title, description }) => {
+        if (!title.length || !description.length) return
+        setAddTask(false)
+        onTaskAdd({
+            taskName: title,
+            taskDescription: description,
+            boardId: board.id
+        })
     }
 
     const prepearedTasks = board.tasks
@@ -43,9 +54,20 @@ export default ({ board, otherBoards, onTaskMove, onTaskDelete }) => {
                     name={board.name}
                     sorting={sorts[direction].text}
                     onChangeSort={changeSort}
+                    onAddingTask={() => {setAddTask(true)}}
                 />
             }
         >
+        {addTask && (
+            <ItemWrapper key={'none'}>
+                <Task
+                    editMode
+                    title=''
+                    description=''
+                    onSave={onSave}
+                />
+            </ItemWrapper>
+        )}
         {prepearedTasks.map(task =>
             <ItemWrapper key={task.id}>
                 <Task

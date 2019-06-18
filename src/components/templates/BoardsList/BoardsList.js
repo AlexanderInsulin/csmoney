@@ -16,7 +16,7 @@ const BoardWrapper = styled.div`
     }
 `
 
-export default ({ boards, onTaskMove, onTaskDelete }) => (
+export default ({ boards, onTaskMove, onTaskDelete, onTaskAdd }) => (
     <Layout>
         {boards.map(board => (
             <BoardWrapper key={board.id}>
@@ -25,6 +25,7 @@ export default ({ boards, onTaskMove, onTaskDelete }) => (
                     otherBoards={boards.filter(b => b !== board)}
                     onTaskMove={onTaskMove}
                     onTaskDelete={onTaskDelete}
+                    onTaskAdd={onTaskAdd}
                 />
             </BoardWrapper>
         ))}

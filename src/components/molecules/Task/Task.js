@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { Card, Action, Dropdown } from '../../atoms'
@@ -32,17 +32,51 @@ const Actions = styled.div`
 
 const preapareBoard = (board) => ({ id: board.id, text: board.name })
 
-export default ({ title, description, otherBoards, onDelete, onMove }) => (
-    <Card>
-        <Layout>
-            <Title>{title}</Title>
-            <Description>{description}</Description>
-            <Actions>
-                <Action type={'danger'} onClick={onDelete}>Удалить</Action>
-                <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
-                    <Action type={'secondary'}>Переместить ↓</Action>
-                </Dropdown>
-            </Actions>
-        </Layout>
-    </Card>
+const ViewContent = ({ title, description, otherBoards, onDelete, onMove }) => (
+    <React.Fragment>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Actions>
+            <Action type={'danger'} onClick={onDelete}>Удалить</Action>
+            <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
+                <Action type={'secondary'}>Переместить ↓</Action>
+            </Dropdown>
+        </Actions>
+    </React.Fragment>
 )
+
+const EditContent = ({ title, description, setTitle, setDescription, onSave }) => (
+    <React.Fragment>
+        <Title
+            as='input'
+            value={title}
+            placeholder='Title'
+            onChange={e => setTitle(e.target.value)}
+        />
+        <Description
+            as='textarea'
+            value={description}
+            placeholder='Description'
+            onChange={e => setDescription(e.target.value)}
+        />
+        <Actions>
+           <Action type={'succeed'} onClick={onSave}>Сохранить</Action>
+        </Actions>
+    </React.Fragment>
+)
+
+export default ({ editMode, title: initialTitle, description: initialDesctiption, otherBoards, onDelete, onMove, onSave }) =>{
+    const [title, setTitle] = useState(initialTitle)
+    const [description, setDescription] = useState(initialDesctiption)
+
+    return (
+        <Card>
+            <Layout>
+            { editMode
+                ? <EditContent {...{ title, setTitle, description, setDescription, onSave: () => onSave({ title, description }) }}/>
+                : <ViewContent {...{ title, description, otherBoards, onDelete, onMove }}/>
+            }
+            </Layout>
+        </Card>
+    )
+}
