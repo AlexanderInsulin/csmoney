@@ -5,6 +5,7 @@ export const types = {
     secondary: '#bdb9b9',
     succeed: '#2DCD72',
     primary: '#4B7CF3',
+    undefined: '#000000'
 }
 
 export const sizes = {
@@ -20,6 +21,6 @@ export default styled.button`
     cursor: pointer;
 
     ${ ({underline, type}) => underline && `
-        border-bottom: 1px solid ${types[type] || '#000000'}22;
+        border-bottom: 1px solid ${types[type]}22;
     ` }
 `
