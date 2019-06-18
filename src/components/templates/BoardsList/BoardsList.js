@@ -5,6 +5,7 @@ import { Board } from '../../organisms'
 
 const Layout = styled.div`
     display: flex;
+    height: 100%;
 `
 
 const BoardWrapper = styled.div`

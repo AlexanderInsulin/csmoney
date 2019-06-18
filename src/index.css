@@ -1,6 +1,13 @@
 body {
+  padding: 8px;
   margin: 0;
   font-family: "Proxima Nova", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
