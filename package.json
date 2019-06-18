@@ -2,8 +2,11 @@
   "name": "csmoney",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://AlexanderInsulin.github.io/csmoney",
   "dependencies": {
     "@storybook/addon-centered": "^5.1.8",
+    "add": "^2.0.6",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -11,7 +14,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "yarn": "^1.16.0"
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
@@ -19,7 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "predeploy": "SKIP_PREFLIGHT_CHECK=true npm run build",
+    "deploy": "SKIP_PREFLIGHT_CHECK=true gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
