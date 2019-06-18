@@ -28,13 +28,13 @@ const Layout = styled.div`
     }
 `
 
-export default ({ children,items = [], onChoose }) => (
+export default ({ children, items = [], keyName = 'id', textName = 'text', onChoose }) => (
     <Layout>
         {children}
         <DropdownContent>
             {items.map(item =>
-                <DropdownItem key={item.id} onClick={() => onChoose(item)}>
-                    {item.text}
+                <DropdownItem key={item[keyName]} onClick={() => onChoose(item)}>
+                    {item[textName]}
                 </DropdownItem>
             )}
         </DropdownContent>

@@ -10,8 +10,8 @@ const items = [
     { text: 'second', id: 2 },
 ]
 
-storiesOf('atoms/Dropdown', module)
-  .add('with text', () => (
+storiesOf('shared/Dropdown', module)
+  .add('with action', () => (
     <div>
         <Dropdown items={items} onChoose={action('onChoose')}>
             <Action type={'secondary'}>Переместить ↓</Action>
