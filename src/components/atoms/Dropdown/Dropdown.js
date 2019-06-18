@@ -16,6 +16,7 @@ const DropdownContent = styled.ul`
     left: 0;
     right: 0;
     top: 0;
+    box-shadow: 0 0 12px #eeeeee;
 `
 
 const Layout = styled.div`
