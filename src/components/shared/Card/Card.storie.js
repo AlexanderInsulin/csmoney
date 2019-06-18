@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text } from '@storybook/addon-knobs';
+
 import Card from './Card';
 
-storiesOf('atoms/Card', module)
+storiesOf('shared/Card', module)
   .add('with text', () => (
-    <div style={{ width: '280px' }}>
-        <Card>Loren ipsum!</Card>
-    </div>
+      <Card> {text('children', 'I am a Card!')} </Card>
   ))
