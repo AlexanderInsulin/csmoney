@@ -2,11 +2,12 @@
   "name": "csmoney",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://AlexanderInsulin.github.io/csmoney",
+  "homepage": "http://AlexanderInsulin.github.io/csmoney",
   "dependencies": {
     "@storybook/addon-centered": "^5.1.8",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
+    "react-contenteditable": "^3.2.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
