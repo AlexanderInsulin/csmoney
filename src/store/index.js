@@ -1,5 +1,8 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers'
+import thunk from 'redux-thunk';
+
+import * as actions from './actions'
 
 const initialState = [
     {
@@ -17,4 +20,15 @@ const initialState = [
     { id: 3, name: 'Done', tasks: [] },
 ]
 
-export default createStore(reducers, initialState)
+const store = createStore(
+    reducers,
+    initialState,
+    applyMiddleware(thunk)
+);
+
+export {
+    store,
+    actions,
+};
+
+export default store;

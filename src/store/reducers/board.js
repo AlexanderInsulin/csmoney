@@ -1,4 +1,4 @@
-import * as types from '../actions/types';
+import { types } from '../actions';
 import task from './task'
 
 const initialState = {

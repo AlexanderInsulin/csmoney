@@ -52,7 +52,7 @@ export default ({ board, otherBoards, onTaskMove, onTaskDelete }) => {
                     title={task.name}
                     description={task.description}
                     otherBoards={otherBoards}
-                    onMove={(boardId) => onTaskMove({ boardId, taskId: task.id})}
+                    onMove={(boardId) => onTaskMove({ boardId, taskId: task.id, fromBoardId: board.id })}
                     onDelete={() => onTaskDelete({ boardId: board.id, taskId: task.id})}
                 />
             </ItemWrapper>

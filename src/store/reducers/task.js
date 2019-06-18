@@ -1,4 +1,4 @@
-import * as types from '../actions/types';
+import { types } from '../actions';
 import { v4 } from 'uuid';
 
 const initialState = {
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TASK:
         return {
-            id: v4(),
+            id: action.taskId || v4(),
             name: action.taskName,
             description: action.taskDescription,
         }
