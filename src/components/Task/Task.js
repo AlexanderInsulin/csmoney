@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import Card from '../Card'
-import Action from '../Action'
-import Dropdown from '../Dropdown'
+import { Action, Dropdown, Card } from '../shared'
 
 const Layout = styled.div`
     display: flex;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Action from '../Action'
+import { Action } from '../shared'
 
 const Layout = styled.section`
     position: relative;
