@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Column } from '../../atoms'
-import { BoardInfo, Task } from '../../molecules'
+import Column from '../Column'
+import BoardInfo from '../BoardInfo'
+import Task from '../Task'
 
 const sortStirng = (a, b) => {
     if(a < b) { return -1; }
@@ -34,9 +35,13 @@ export default ({ board, otherBoards, onTaskMove, onTaskDelete, onTaskAdd }) => 
         else setDirection('down')
     }
 
-    const onSave = ({ title, description }) => {
+    const onSave = ({ title, description, id }) => {
         if (!title.length || !description.length) return
+        
         setAddTask(false)
+        if (id) {
+            return
+        }
         onTaskAdd({
             taskName: title,
             taskDescription: description,
@@ -74,6 +79,7 @@ export default ({ board, otherBoards, onTaskMove, onTaskDelete, onTaskAdd }) => 
                     title={task.name}
                     description={task.description}
                     otherBoards={otherBoards}
+                    onSave={onSave}
                     onMove={(boardId) => onTaskMove({ boardId, taskId: task.id, fromBoardId: board.id })}
                     onDelete={() => onTaskDelete({ boardId: board.id, taskId: task.id})}
                 />

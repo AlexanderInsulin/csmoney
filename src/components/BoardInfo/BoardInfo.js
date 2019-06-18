@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Action } from '../../atoms'
+import Action from '../Action'
 
 const Layout = styled.section`
     position: relative;

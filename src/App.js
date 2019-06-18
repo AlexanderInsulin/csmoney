@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import BoardsList from './components/templates/BoardsList'
+import BoardsList from './components/BoardsList'
 import { actions } from './store'
 
 export default () => {

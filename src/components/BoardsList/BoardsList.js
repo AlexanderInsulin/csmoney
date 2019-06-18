@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Board } from '../../organisms'
+import Board from '../Board'
 
 const Layout = styled.div`
     display: flex;

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { Card, Action, Dropdown } from '../../atoms'
+import Card from '../Card'
+import Action from '../Action'
+import Dropdown from '../Dropdown'
 
 const Layout = styled.div`
     display: flex;
