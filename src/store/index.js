@@ -29,6 +29,7 @@ const store = createStore(
 export {
     store,
     actions,
+    reducers,
 };
 
 export default store;
