@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import Column from '../Column'
+import { Column } from '../shared'
 import BoardInfo from '../BoardInfo'
 import Task from '../Task'
 
