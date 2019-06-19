@@ -15,11 +15,12 @@ const ItemWrapper = styled.div`
     margin: 0px 10px 20px;
 `
 
-export default ({ tasks, otherLists, onMove, onDelete, onTitleChange, onDescriptionChange }) => (
+export default ({ tasks, name, otherLists, onMove, onDelete, onTitleChange, onDescriptionChange }) => (
     <Layout>
         {tasks.map(task =>
             <ItemWrapper key={task.id}>
                 <Task
+                    done={name === 'Done'}
                     title={task.name}
                     description={task.description}
                     otherLists={otherLists}

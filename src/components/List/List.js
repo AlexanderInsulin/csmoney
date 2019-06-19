@@ -38,6 +38,7 @@ export default ({ list, otherLists, onTaskMove, onTaskDelete, onTaskAdd, onTaskU
             />
             <ListBody
                 tasks={prepearedTasks}
+                name={list.name}
                 otherLists={otherLists}
                 onMove={(taskId, listId) => onTaskMove(list.id, taskId, listId)}
                 onDelete={(taskId) => onTaskDelete(taskId, list.id)}

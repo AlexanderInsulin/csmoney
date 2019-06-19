@@ -29,8 +29,8 @@ const Actions = styled.div`
 
 const listToDropdown = (list) => ({ ...list, text: list.name })
 
-export default ({ editMode, title, description, otherLists, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
-    <Card>
+export default ({ title, description, otherLists, done, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
+    <Card style={done ? {opacity: '0.4'} : {}}>
         <Layout>
             <Title text={title} tagName='h4' onChange={onTitleChange} placeholder='Title' />
             <Description text={description} onChange={onDescriptionChange} placeholder='Description'  />
