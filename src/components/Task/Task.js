@@ -27,16 +27,16 @@ const Actions = styled.div`
     }
 `
 
-const preapareBoard = (board) => ({ id: board.id, text: board.name })
+const listToDropdown = (list) => ({ ...list, text: list.name })
 
-export default ({ editMode, title, description, otherBoards, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
+export default ({ editMode, title, description, otherLists, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
     <Card>
         <Layout>
             <Title text={title} tagName='h4' onChange={onTitleChange} />
             <Description text={description} onChange={onDescriptionChange} />
             <Actions>
                 <Action type={'danger'} onClick={onDelete}>Удалить</Action>
-                <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
+                <Dropdown items={otherLists.map(listToDropdown)} onChoose={(item => onMove(item))}>
                     <Action type={'secondary'}>Переместить ↓</Action>
                 </Dropdown>
             </Actions>
