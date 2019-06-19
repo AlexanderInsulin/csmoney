@@ -32,8 +32,8 @@ const listToDropdown = (list) => ({ ...list, text: list.name })
 export default ({ editMode, title, description, otherLists, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
     <Card>
         <Layout>
-            <Title text={title} tagName='h4' onChange={onTitleChange} />
-            <Description text={description} onChange={onDescriptionChange} />
+            <Title text={title} tagName='h4' onChange={onTitleChange} placeholder='Title' />
+            <Description text={description} onChange={onDescriptionChange} placeholder='Description'  />
             <Actions>
                 <Action type={'danger'} onClick={onDelete}>Удалить</Action>
                 <Dropdown items={otherLists.map(listToDropdown)} onChoose={(item => onMove(item))}>

@@ -5,13 +5,19 @@ import ContentEditable from 'react-contenteditable'
 const StyledContentEditable = styled(ContentEditable)`
     outline: none;
     min-width: 100%;
+
+    &:empty:before {
+        content: attr(placeholder);
+        color: #bdb9b9;
+    }
 `
 
-export default ({ text, onChange, tagName = 'div', className }) => {
+export default ({ text, placeholder, onChange, tagName = 'div', className }) => {
     const ref = useRef()
     return (
         <StyledContentEditable
             innerRef={ref}
+            placeholder={placeholder}
             html={text}
             onChange={(e) => { onChange(e.target.value) }}
             tagName={tagName}

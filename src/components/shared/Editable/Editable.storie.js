@@ -16,6 +16,7 @@ storiesOf('shared/Editable', module)
   .add('Simple editable div', () => (
       <Editable
         text={text('text', 'hello, world')}
+        placeholder={text('placeholder', 'TITLE')}
         onChange={action('onChange')}
         tagName={text('tagName', 'div')}
       />
