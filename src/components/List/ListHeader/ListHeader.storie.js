@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 
-import BoardInfo from './BoardInfo';
+import ListHeader from './ListHeader';
 
-storiesOf('molecules/BoardInfo', module)
+storiesOf('List/ListHeader', module)
   .add('with text', () => (
     <div style={{ width: '280px' }}>
-        <BoardInfo
+        <ListHeader
             name={text('name', 'To Do')}
             sorting={text('sorting', 'sort (A-я)')}
             onChangeSort={action('onChangeSort')}

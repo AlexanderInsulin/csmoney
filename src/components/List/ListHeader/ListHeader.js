@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Action } from '../shared'
+import { Action } from '../../shared'
 
 const Layout = styled.section`
     position: relative;
@@ -9,6 +9,7 @@ const Layout = styled.section`
     display: flex;
     flex-direction: column;
     padding: 10px;
+    box-shadow: 0 0 12px #eeeeee;
 `
 
 const Row = styled.div`

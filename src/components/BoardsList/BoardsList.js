@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Board from '../Board'
+import Board from '../List'
 
 const Layout = styled.div`
     display: flex;
