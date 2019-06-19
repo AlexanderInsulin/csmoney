@@ -7,7 +7,7 @@ import Task from './Task';
 
 
 
-storiesOf('molecules/Task', module)
+storiesOf('Task', module)
   .add('with text', () => (
     <div style={{ width: '280px' }}>
         <Task
@@ -16,6 +16,8 @@ storiesOf('molecules/Task', module)
             otherBoards={array('otherBoards', [ {id: 1, name: 'qwer'}, {id: 2, name: 'zxc'} ])}
             onDelete={action('onDelete')}
             onMove={action('onMove')}
+            onTitleChange={action('onTitleChange')}
+            onDescriptionChange={action('onDescriptionChange')}
         />
     </div>
   ))

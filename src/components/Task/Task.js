@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { Action, Dropdown, Card } from '../shared'
+import { Action, Dropdown, Card, Editable } from '../shared'
 
 const Layout = styled.div`
     display: flex;
     flex-direction: column;
 `
 
-
-const Title = styled.h4`
-    all: unset;
+const Title = styled(Editable)`
     font-weight: 900;
     font-size: 16px;
     margin: 0 0 10px 0;
 `
 
-const Description = styled.div`
-    all: unset;
+const Description = styled(Editable)`
     font-size: 14px;
     margin: 0 0 10px 0;
 `
@@ -32,51 +29,17 @@ const Actions = styled.div`
 
 const preapareBoard = (board) => ({ id: board.id, text: board.name })
 
-const ViewContent = ({ title, description, otherBoards, onDelete, onMove }) => (
-    <React.Fragment>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <Actions>
-            <Action type={'danger'} onClick={onDelete}>Удалить</Action>
-            <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
-                <Action type={'secondary'}>Переместить ↓</Action>
-            </Dropdown>
-        </Actions>
-    </React.Fragment>
+export default ({ editMode, title, description, otherBoards, onDelete, onMove, onTitleChange, onDescriptionChange }) => (
+    <Card>
+        <Layout>
+            <Title text={title} tagName='h4' onChange={onTitleChange} />
+            <Description text={description} onChange={onDescriptionChange} />
+            <Actions>
+                <Action type={'danger'} onClick={onDelete}>Удалить</Action>
+                <Dropdown items={otherBoards.map(preapareBoard)} onChoose={(item => onMove(item.id))}>
+                    <Action type={'secondary'}>Переместить ↓</Action>
+                </Dropdown>
+            </Actions>
+        </Layout>
+    </Card>
 )
-
-const EditContent = ({ title, description, setTitle, setDescription, onSave }) => (
-    <React.Fragment>
-        <Title
-            as='input'
-            value={title}
-            placeholder='Title'
-            onChange={e => setTitle(e.target.value)}
-        />
-        <Description
-            as='textarea'
-            value={description}
-            placeholder='Description'
-            onChange={e => setDescription(e.target.value)}
-        />
-        <Actions>
-           <Action type={'succeed'} onClick={onSave}>Сохранить</Action>
-        </Actions>
-    </React.Fragment>
-)
-
-export default ({ editMode, title: initialTitle, description: initialDesctiption, otherBoards, onDelete, onMove, onSave }) =>{
-    const [title, setTitle] = useState(initialTitle)
-    const [description, setDescription] = useState(initialDesctiption)
-
-    return (
-        <Card>
-            <Layout>
-            { editMode
-                ? <EditContent {...{ title, setTitle, description, setDescription, onSave: () => onSave({ title, description }) }}/>
-                : <ViewContent {...{ title, description, otherBoards, onDelete, onMove }}/>
-            }
-            </Layout>
-        </Card>
-    )
-}
