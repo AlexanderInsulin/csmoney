@@ -8,7 +8,7 @@ const Layout = styled.div`
     height: 100%;
 `
 
-const BoardWrapper = styled.div`
+const ListWrapper = styled.div`
     flex: 1;
 
     &:not(:last-child) {
@@ -16,18 +16,19 @@ const BoardWrapper = styled.div`
     }
 `
 
-export default ({ lists, onTaskMove, onTaskDelete, onTaskAdd }) => (
+export default ({ lists, onTaskMove, onTaskDelete, onTaskAdd, onTaskUpdate }) => (
     <Layout>
         {lists.map(list => (
-            <BoardWrapper key={list.id}>
+            <ListWrapper key={list.id}>
                 <List
                     list={list}
                     otherLists={lists.filter(b => b !== list)}
                     onTaskMove={onTaskMove}
                     onTaskDelete={onTaskDelete}
                     onTaskAdd={onTaskAdd}
+                    onTaskUpdate={onTaskUpdate}
                 />
-            </BoardWrapper>
+            </ListWrapper>
         ))}
     </Layout>
 )

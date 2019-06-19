@@ -33,7 +33,7 @@ export default ({ children, items = [], keyName = 'id', textName = 'text', onCho
         {children}
         <DropdownContent>
             {items.map(item =>
-                <DropdownItem key={item[keyName]} onClick={() => onChoose(item)}>
+                <DropdownItem key={item[keyName]} onClick={() => onChoose(item[keyName])}>
                     {item[textName]}
                 </DropdownItem>
             )}

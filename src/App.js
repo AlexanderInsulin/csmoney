@@ -1,20 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import BoardsList from './components/Board'
-import { deleteTask, moveTask, addTask } from './store/actions/taskActions'
+import Board from './components/Board'
+import { deleteTask, moveTask, addTask, updateTask } from './store/actions/taskActions'
 
 export default () => {
-    const boards = useSelector(state => state)
+    const lists = useSelector(state => state)
     const dispatch = useDispatch()
 
-    const onTaskDelete = ({ taskId, boardId }) =>
-        dispatch(deleteTask(taskId, boardId))
+    const onTaskDelete = (taskId, listId) =>
+        dispatch(deleteTask(taskId, listId))
 
-    const onTaskMove = ({ taskId, boardId, fromBoardId }) =>
-        dispatch(moveTask(taskId, boardId, fromBoardId))
+    const onTaskMove = (fromListId, taskId, listId) =>
+        dispatch(moveTask(fromListId, taskId, listId))
 
-    const onTaskAdd = ({ taskName, taskDescription, boardId }) =>
-        dispatch(addTask(taskName, taskDescription, boardId))
+    const onTaskAdd = (listId) =>
+        dispatch(addTask('', '', listId))
 
-    return <BoardsList {...{ boards, onTaskDelete, onTaskMove, onTaskAdd }} />
+    const onTaskUpdate = (listId, taskId, fileds) =>
+        dispatch(updateTask(listId, taskId, fileds))
+
+    return <Board {...{ lists, onTaskDelete, onTaskMove, onTaskAdd, onTaskUpdate}} />
 };

@@ -21,7 +21,7 @@ export const sorts = {
     },
 }
 
-export default ({ list, otherLists, onTaskMove, onTaskDelete, onTaskAdd }) => {
+export default ({ list, otherLists, onTaskMove, onTaskDelete, onTaskAdd, onTaskUpdate }) => {
     const [direction, setDirection] = useState('down')
 
     const changeSort = () => {
@@ -38,15 +38,15 @@ export default ({ list, otherLists, onTaskMove, onTaskDelete, onTaskAdd }) => {
                 name={list.name}
                 sorting={sorts[direction].text}
                 onChangeSort={changeSort}
-                onAddingTask={onTaskAdd}
+                onAddingTask={() => onTaskAdd(list.id)}
             />
             <ListBody
                 tasks={prepearedTasks}
                 otherLists={otherLists}
                 onMove={(taskId, listId) => onTaskMove(list.id, taskId, listId)}
-                onDelete={(taskId) => onTaskDelete(list.id, taskId)}
-                // onTitleChange={action('onTitleChange')}
-                // onDescriptionChange={action('onDescriptionChange')}
+                onDelete={(taskId) => onTaskDelete(taskId, list.id)}
+                onTitleChange={(taskId, value) => onTaskUpdate(list.id, taskId, { name: value })}
+                onDescriptionChange={(taskId, value) => onTaskUpdate(list.id, taskId, { description: value })}
             />
         </Column>
     )

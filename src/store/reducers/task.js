@@ -15,6 +15,9 @@ export default (state = initialState, action) => {
             name: action.taskName,
             description: action.taskDescription,
         }
+    case types.UPDATE_TASK:
+        if (action.taskId !== state.id) return state
+        return { ...state, ...action.fields }
     default:
       return state
   }

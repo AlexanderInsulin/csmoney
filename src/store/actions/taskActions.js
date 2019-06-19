@@ -1,27 +1,35 @@
-import { ADD_TASK, REMOVE_TASK } from './types'
+import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from './types'
 
-export const addTask = (name, description, boardId, id) => ({
+export const addTask = (name, description, listId, id) => ({
     type: ADD_TASK,
     taskId: id,
     taskName: name,
     taskDescription: description,
-    boardId,
+    listId,
 })
 
-export const deleteTask = (taskId, boardId) => ({
+export const deleteTask = (taskId, listId) => ({
     type: REMOVE_TASK,
     taskId,
-    boardId
+    listId
 })
 
-export const moveTask = (taskId, boardId, fromBoardId) => (dispatch, getState) => {
-    const fromBoard = getState()
-        .find(board => board.id === fromBoardId)
+export const updateTask = (listId, taskId, fields) => ({
+    type: UPDATE_TASK,
+    taskId,
+    listId,
+    fields
+})
 
-    const { name, description, id } = fromBoard.tasks
+export const moveTask = (fromListId, taskId, listId) => (dispatch, getState) => {
+    const fromList = getState()
+        .find(list => list.id === fromListId)
+
+    const { name, description, id } = fromList.tasks
         .find(task => task.id === taskId)
 
-    dispatch(deleteTask(taskId, fromBoardId))
-    dispatch(addTask(name, description, boardId, id ))
+
+    dispatch(deleteTask(taskId, fromListId))
+    dispatch(addTask(name, description, listId, id ))
 }
 
