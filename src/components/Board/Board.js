@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Board from '../List'
+import List from '../List'
 
 const Layout = styled.div`
     display: flex;
@@ -16,13 +16,13 @@ const BoardWrapper = styled.div`
     }
 `
 
-export default ({ boards, onTaskMove, onTaskDelete, onTaskAdd }) => (
+export default ({ lists, onTaskMove, onTaskDelete, onTaskAdd }) => (
     <Layout>
-        {boards.map(board => (
-            <BoardWrapper key={board.id}>
-                <Board
-                    board={board}
-                    otherBoards={boards.filter(b => b !== board)}
+        {lists.map(list => (
+            <BoardWrapper key={list.id}>
+                <List
+                    list={list}
+                    otherLists={lists.filter(b => b !== list)}
                     onTaskMove={onTaskMove}
                     onTaskDelete={onTaskDelete}
                     onTaskAdd={onTaskAdd}

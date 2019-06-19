@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import BoardsList from './BoardsList';
+import Board from './Board';
 
-const boards = [
+const lists = [
     {
         id: 1,
         name: 'To Do',
@@ -34,11 +34,11 @@ const boards = [
     }
 ]
 
-storiesOf('templates/BoardsList', module)
-  .add('with text', () => (
+storiesOf('Board', module)
+  .add('board example', () => (
     <div>
-        <BoardsList
-            boards={boards}
+        <Board
+            lists={lists}
             onTaskMove={action('actiononTaskMove')}
             onTaskDelete={action('onTaskDelete')}
         />
