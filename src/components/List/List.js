@@ -4,11 +4,7 @@ import { Column } from '../shared'
 import ListHeader from './ListHeader'
 import ListBody from './ListBody'
 
-const sortStirng = (a, b) => {
-    if(a < b) { return -1; }
-    if(a > b) { return 1; }
-    return 0;
-}
+const sortStirng = (a, b) => a.localeCompare(b, { kf: 'upper' }, { sensitivity: 'variant' })
 
 export const sorts = {
     'down': {
