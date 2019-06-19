@@ -3,6 +3,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import Board from './components/Board'
 import { deleteTask, moveTask, addTask, updateTask } from './store/actions/taskActions'
 
+const debounce = (callback, wait, accumutate) => {
+    let timeout = null
+    let accum = {}
+
+    return (...args) => {
+        if (accumutate) accum = { ...accum, ...args[accumutate] }
+
+        const next = () => {
+            callback(...args, accum)
+            accum = {}
+        }
+
+        clearTimeout(timeout)
+        timeout = setTimeout(next, wait)
+    }
+}
+
 export default () => {
     const lists = useSelector(state => state)
     const dispatch = useDispatch()
@@ -16,8 +33,8 @@ export default () => {
     const onTaskAdd = (listId) =>
         dispatch(addTask('', '', listId))
 
-    const onTaskUpdate = (listId, taskId, fileds) =>
-        dispatch(updateTask(listId, taskId, fileds))
+    const onTaskUpdate = debounce((listId, taskId, _, accum) => dispatch(updateTask(listId, taskId, accum)), 300, 2)
 
-    return <Board {...{ lists, onTaskDelete, onTaskMove, onTaskAdd, onTaskUpdate}} />
+
+    return <Board {...{ lists, onTaskDelete, onTaskMove, onTaskAdd, onTaskUpdate }} />
 };
