@@ -5,6 +5,7 @@ import ContentEditable from 'react-contenteditable'
 const StyledContentEditable = styled(ContentEditable)`
     outline: none;
     min-width: 100%;
+    word-break: break-all;
 
     &:empty:before {
         content: attr(placeholder);
